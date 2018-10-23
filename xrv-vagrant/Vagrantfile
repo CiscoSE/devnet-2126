@@ -1,0 +1,72 @@
+# -*- mode: ruby -*-
+
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+    #Ubuntu instance running the portal
+    config.vm.define "devbox" do |node|
+      node.vm.provider "virtualbox" do |pmv|
+        pmv.memory = 2048
+      end
+      node.vm.box =  "ubuntu/bionic64"
+      node.vm.provision "shell", path: "ydk.sh"
+      
+
+      # eth1 connected to link2, auto_config is supported for an ubuntu instance
+      node.vm.network :private_network, virtualbox__intnet: "link2", ip: "11.1.1.2"
+      node.vm.network :forwarded_port, guest:8080, host:2200, id: "webu", auto_correct: true
+    end
+
+    #First XRv instance
+    config.vm.define "rtr1" do |node1|
+      #node1.vm.box =  "IOS-XRv"
+      node1.vm.box = "iosxr/6.1.2"
+
+      # Forward a port list
+      node1.vm.network :forwarded_port, guest: 57777, host: 57778, id: "grpc1", auto_correct: true
+      node1.vm.network :forwarded_port, guest: 830, host: 57779, id: "netconf1", auto_correct: true
+      node1.vm.network :forwarded_port, guest: 22, host: 2322, id: "ssh1", auto_correct: true
+      node1.vm.network :forwarded_port, guest: 80, host: 2323, id: "web1", auto_correct: true
+      node1.vm.network :forwarded_port, guest: 443, host: 2324, id: "sweb1", auto_correct: true
+      node1.vm.network :forwarded_port, guest: 57722, host: 57780, id: "xrv1", auto_correct: true
+
+      # gig0/0/0/0 connected to link1, gig00/0/1 connected to link2, gig0/0/0/2 connected to link3, auto-config not supported.
+      node1.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
+      node1.vm.network :private_network, virtualbox__intnet: "link2", auto_config: false
+      node1.vm.network :private_network, virtualbox__intnet: "link3", auto_config: false
+
+      #load day0 configuration file from configs/rtr1_config to the XRv instance
+      node1.vm.provision "file", source: "configs/rtr1_config", destination: "/home/vagrant/rtr1_config"
+      node1.vm.provision "shell" do |s|
+        s.path =  "scripts/apply_config.sh"
+        s.args = ["/home/vagrant/rtr1_config"]
+      end
+    end
+
+    #Second XRv instance
+    config.vm.define "rtr2" do |node2|
+      #node2.vm.box =  "IOS-XRv"
+      node2.vm.box = "iosxr/6.1.2"
+
+      # Forward a port list
+      node2.vm.network :forwarded_port, guest: 57777, host: 57781, id: "grpc2", auto_correct: true
+      node2.vm.network :forwarded_port, guest: 830, host: 57782, id: "netconf2", auto_correct: true
+      node2.vm.network :forwarded_port, guest: 22, host: 2422, id: "ssh2", auto_correct: true
+      node2.vm.network :forwarded_port, guest: 80, host: 2423, id: "web2", auto_correct: true
+      node2.vm.network :forwarded_port, guest: 443, host: 2424, id: "sweb2", auto_correct: true
+      node2.vm.network :forwarded_port, guest: 57722, host: 57783, id: "xrv2", auto_correct: true
+
+      # gig0/0/0/0 connected to link1, gig00/0/1 connected to link2, gig0/0/0/2 connected to link3, auto-config not supported.
+      node2.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
+      node2.vm.network :private_network, virtualbox__intnet: "link2", auto_config: false
+      node2.vm.network :private_network, virtualbox__intnet: "link3", auto_config: false
+
+      #load day0 configuration file from configs/rtr2_config to the XRv instance
+      node2.vm.provision "file", source: "configs/rtr2_config", destination: "/home/vagrant/rtr2_config"
+      node2.vm.provision "shell" do |s|
+        s.path =  "scripts/apply_config.sh"
+        s.args = ["/home/vagrant/rtr2_config"]
+      end
+    end
+end

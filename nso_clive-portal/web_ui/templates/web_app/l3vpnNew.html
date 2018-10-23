@@ -1,0 +1,185 @@
+<div class="content">
+    <div class="hero hero--indigo">
+        <div class="hero__content">
+            <div class="container center-xs">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="flex-fluid">
+                            <h1>L3 VPN - Nuevo servicio</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-blue base-margin-bottom">General</h4>
+                        <hr/>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="name" ng-model="service.name">
+                                <label for="name">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="customer" ng-model="service.customer">
+                                <label for="customer">Cliente</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="vrf" ng-model="service.vrfName">
+                                <label for="vrf">VRF</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="section">
+
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-blue base-margin-bottom">Dispositivo 1</h4>
+                        <hr/>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <div class="form-group__text select ">
+                                <select id="sel_devices_1" name="sel_pod"
+                                        ng-options="device as device.name for device in devices track by device.name"
+                                        ng-model="service.device1"
+                                        ng-change="loadAllowedParameters(service.device)">
+                                </select>
+
+                                <label for="sel_devices_1">Router
+
+                                </label>
+                            </div>
+                            <div class="form-group__text select ">
+                                <select id="sel_if_1" name="sel_pod"
+                                        ng-options="interface as interface.name for interface in allowedInteraces track by interface.id"
+                                        ng-model="service.interface1">
+                                </select>
+
+                                <label for="sel_if_1">Interfaz
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="ip_1" ng-model="service.ip1">
+                                <label for="ip_1">IP</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="mask_1" ng-model="service.mask1">
+                                <label for="mask_1">Máscara</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="rid_1" ng-model="service.routerid1">
+                                <label for="rid_1">Router ID</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-blue base-margin-bottom">Dispositivo 2</h4>
+                        <hr/>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <div class="form-group__text select ">
+                                <select id="sel_devices_2" name="sel_pod"
+                                        ng-options="device as device.name for device in devices track by device.name"
+                                        ng-model="service.device2"
+                                        ng-change="loadAllowedParameters(service.device)">
+                                </select>
+
+                                <label for="sel_devices_2">Router
+
+                                </label>
+                            </div>
+                            <div class="form-group__text select ">
+                                <select id="sel_if_2" name="sel_pod"
+                                        ng-options="interface as interface.name for interface in allowedInteraces track by interface.id"
+                                        ng-model="service.interface2">
+                                </select>
+
+                                <label for="sel_if_2">Interfaz
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="ip_2" ng-model="service.ip2">
+                                <label for="ip_2">IP</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="mask_2" ng-model="service.mask2">
+                                <label for="mask_2">Máscara</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="rid_2" ng-model="service.routerid2">
+                                <label for="rid_2">Router ID</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <ul class="list list--inline list--loose">
+                            <li>
+                                <button class="btn btn--small btn--primary" ng-click="deployL3vpnService()">Crear
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

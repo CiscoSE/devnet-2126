@@ -1,0 +1,87 @@
+!
+hostname rtr2
+telnet vrf default ipv4 server max-servers 10
+username vagrant
+ group root-lr
+ group cisco-support
+ secret 5 $1$2SMa$pl9dQYZlo7JA6T2hQOT83.
+!
+vrf coke
+ address-family ipv4 unicast
+  import route-target
+   1:1
+  !
+  export route-target
+   1:1
+  !
+ !
+!
+tpa
+ vrf default
+  address-family ipv4
+   update-source dataports MgmtEth0/RP0/CPU0/0
+  !
+ !
+!
+line template vty
+ transport input ssh
+!
+interface Loopback0
+ ipv4 address 2.2.2.2 255.255.255.255
+  no shut
+!
+interface MgmtEth0/RP0/CPU0/0
+ ipv4 address dhcp
+  no shut
+!
+interface GigabitEthernet0/0/0/0
+ description link to CE
+ vrf coke
+ ipv4 address 50.2.1.2 255.255.255.252
+  no shut
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 11.1.1.4 255.255.255.0
+  no shut
+!
+interface GigabitEthernet0/0/0/2
+ ipv4 address 10.1.1.2 255.255.255.0
+  no shut
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 MgmtEth0/RP0/CPU0/0 10.0.2.2
+ !
+!
+router bgp 1
+ bgp router-id 2.2.2.2
+ address-family ipv4 unicast
+  network 50.2.0.0/16
+ !
+ address-family vpnv4 unicast
+ !
+ vrf coke
+  rd 1:1
+  address-family ipv4 unicast
+  !
+  neighbor 50.2.1.1
+   remote-as 1
+   address-family ipv4 unicast
+   !
+  !
+ !
+!
+grpc
+ port 57777
+!
+xml agent
+!
+netconf agent tty
+!
+netconf-yang agent
+ ssh
+!
+ssh server v2
+ssh server vrf default
+ssh server netconf vrf default
+commit

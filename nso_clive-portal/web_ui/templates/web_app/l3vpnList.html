@@ -1,0 +1,64 @@
+<div class="content">
+    <div class="hero hero--indigo">
+        <div class="hero__content">
+            <div class="container center-xs">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="flex-fluid">
+                            <h1>L3 VPN - Implementados</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <ul class="list list--inline list--loose">
+                            <li>
+                                <button class="btn btn--small btn--success" ng-click="newL3vpnService()">Nuevo
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn--small btn--default" ng-click="getL3vpnServices()">Refresh
+                                </button>
+                            </li>
+                        </ul>
+                        <hr/>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="responsive-table">
+                            <table class="table table--bordered table--hover">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre
+                                    </th>
+                                    <th>Cliente
+                                    </th>
+                                    <th>VRF
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="clickable-row" ng-repeat="deployedService in l3vpnServices"
+                                    ng-click="showL3vpnDetails(deployedService)">
+                                    <td></td>
+                                    <td>{a deployedService.name a}</td>
+                                    <td>{a deployedService.customer a}</td>
+                                    <td>{a deployedService['vrf-name'] a}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+{
+  "l3vpn-test1:l3vpn-test1": [
+    {
+      "name": "{{ name }}",
+      "vrf-name": "{{ vrfName }}",
+      "customer":"{{ customer }}",
+      "devices": [
+        {
+          "device": "{{ device1.name }}",
+          "ip-address": "{{ ip1 }}",
+          "netmask": "{{ mask1 }}",
+          "interface-id": "{{ interface1.id }}",
+          "router-id": "{{ routerid1 }}"
+        },
+        {
+          "device": "{{ device2.name }}",
+          "ip-address": "{{ ip2 }}",
+          "netmask": "{{ mask2 }}",
+          "interface-id": "{{ interface2.id }}",
+          "router-id": "{{ routerid2 }}"
+        }
+      ]
+    }
+  ]
+}

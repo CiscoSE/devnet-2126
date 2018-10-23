@@ -1,0 +1,4 @@
+{
+	"roomId": "{{ room_id }}",
+	"markdown": "{{ message }}"
+}

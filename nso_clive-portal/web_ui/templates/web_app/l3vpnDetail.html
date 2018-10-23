@@ -1,0 +1,144 @@
+<div class="content">
+    <div class="hero hero--indigo">
+        <div class="hero__content">
+            <div class="container center-xs">
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="flex-fluid">
+                            <h1>EVPN Single Home Services - Service Detail</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h4>Servicio {a service.name a}</h4>
+                        <hr/>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="customer" ng-model="service.customer" readonly>
+                                <label for="customer">Cliente</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="device" ng-model="service['vrf-name']" readonly>
+                                <label for="device">VRF</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn--small btn--secondary" disabled>Edit</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-blue base-margin-bottom">Dispositivo 1</h4>
+                        <hr/>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <label>Router: {a service.devices[0].device a}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <label>Interface: GigabitEthernet {a service.devices[0]['interface-id'] a}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <label>IP: {a service.devices[0]['ip-address'] a}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <label>Máscara: {a service.devices[0].netmask a}</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel panel--loose panel--bordered">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-blue base-margin-bottom">Dispositivo 2</h4>
+                    <hr/>
+                </div>
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <div class="form-group__text">
+                            <label>Router: {a service.devices[1].device a}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group__text">
+                            <label>Interface: GigabitEthernet {a service.devices[1]['interface-id'] a}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group__text">
+                            <label>IP: {a service.devices[1]['ip-address'] a}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group__text">
+                            <label>Máscara: {a service.devices[1].netmask a}</label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="section">
+            <div class="panel panel--loose panel--bordered">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 style="color:#cf2030">Peligro: Eliminar Servicio</h4>
+                        <hr/>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group__text">
+                                <input id="confirmdelete" ng-model="service.confirmdelete">
+                                <label for="confirmdelete">Escriba el nombre del servicio:</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn--small btn--negative" ng-click="deleteL3vpnService()"
+                                ng-disabled="service.confirmdelete != service.name">Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
