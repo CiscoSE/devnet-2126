@@ -1,0 +1,69 @@
+<config-template xmlns="http://tail-f.com/ns/config/1.0"
+                 servicepoint="l3vpn-test1">
+  <devices xmlns="http://tail-f.com/ns/ncs">
+    <device>
+
+      <name>{/devices/device}</name>
+      <config>
+               <vrf xmlns="http://tail-f.com/ned/cisco-ios-xr">
+                    <vrf-list>
+                        <name>{/vrf-name}</name>
+                        <address-family>
+                            <ipv4>
+                                <unicast>
+                                    <import>
+                                        <route-target>
+                                            <address-list>
+                                                <name>1:1</name>
+                                            </address-list>
+                                        </route-target>
+                                    </import>
+                                    <export>
+                                        <route-target>
+                                            <address-list>
+                                                <name>1:1</name>
+                                            </address-list>
+                                        </route-target>
+                                    </export>
+                                </unicast>
+                            </ipv4>
+                        </address-family>
+                    </vrf-list>
+                </vrf>
+                <interface xmlns="http://tail-f.com/ned/cisco-ios-xr">
+                    <GigabitEthernet>
+                        <id>{interface-id}</id>
+                        <description>interface to {/vrf-name}</description>
+                          <ipv4>
+                            <address>
+                                <ip>{ip-address}</ip>
+                                <mask>{netmask}</mask>
+                            </address>
+                          </ipv4>
+                        <vrf>{/vrf-name}</vrf>
+                    </GigabitEthernet>
+                </interface>
+                <router xmlns="http://tail-f.com/ned/cisco-ios-xr">
+                    <bgp>
+                        <bgp-no-instance>
+                            <id>1</id>
+                            <bgp>
+                                <router-id>{router-id}</router-id>
+                            </bgp>
+                            <vrf annotation="vrfs">
+                                <name>{/vrf-name}</name>
+                                <rd>1:1</rd>
+                                <address-family>
+                                    <ipv4>
+                                        <unicast>
+                                        </unicast>
+                                    </ipv4>
+                                </address-family>
+                            </vrf>
+                        </bgp-no-instance>
+                    </bgp>
+                </router>
+      </config>
+    </device>
+  </devices>
+</config-template>

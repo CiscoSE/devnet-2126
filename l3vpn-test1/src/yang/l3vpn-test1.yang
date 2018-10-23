@@ -1,0 +1,61 @@
+module l3vpn-test1 {
+  namespace "http://com/example/l3vpntest1";
+  prefix l3vpn-test1;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  augment /ncs:services {
+  list l3vpn-test1 {
+    key name;
+
+    uses ncs:service-data;
+    ncs:servicepoint "l3vpn-test1";
+
+    leaf vrf-name {
+      type string;
+    }
+
+    leaf name {
+      type string;
+    }
+
+    leaf customer {
+      type string;
+    }
+
+    // may replace this with other ways of refering to the devices.
+
+    list devices {
+       key device;
+
+       leaf device {
+          type leafref {
+            path "/ncs:devices/ncs:device/ncs:name";
+          }
+        }
+
+       leaf interface-id {
+          type string;
+       }
+
+       leaf ip-address {
+          type inet:ipv4-address;
+       }
+
+       leaf netmask {
+          type string;
+       }
+
+       leaf router-id {
+          type inet:ipv4-address;
+
+       }
+    }
+  }
+  }
+}
