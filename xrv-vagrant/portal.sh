@@ -5,8 +5,8 @@ sudo apt-get install python3 -y
 sudo apt-get install python3-pip -y
 
 
-git clone https://www.github.cisco.com/CiscoSE/devnet-2126/nso_clive-portal.git
-cd nso_clive-portal/
+git clone https://www.github.cisco.com/CiscoSE/devnet-2126.git
+cd devnet-2126/nso_clive-portal/
 pip3 install -r requirements.txt
 python3 manage.py makemigrations
 python3 manage.py migrate
