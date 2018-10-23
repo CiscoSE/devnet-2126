@@ -1,4 +1,5 @@
-
+# Devnet-2126 Workshop - Automate service deployment in your network
+This repo contains a Django web application for a NSO portal.  
 
 Contacts:
 * Jason Mah - jamah@cisco.com
@@ -23,5 +24,4 @@ To run the the application execute in the root directory of the distribution:
  - python manage.py runserver 0.0.0.0:8080
  
  
-The application will be running at http://0.0.0.0:8080
 
