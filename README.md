@@ -107,7 +107,7 @@ devices authgroups group vagrant default-map remote-name vagrant remote-password
 commit
 end
 ```
-
+```bash
 admin@ncs# config
 Entering configuration mode terminal
 admin@ncs(config)# devices authgroups group vagrant default-map remote-name vagrant remote-password vagrant remote-secondary-password vagrant
@@ -125,7 +125,7 @@ devices authgroups group vagrant
  !
 !
 admin@ncs#
-
+```
 
 ####Add the first IOS-XR vagrant device
 
@@ -141,7 +141,7 @@ commit
 end
 device fetch-ssh-host-keys devices PE1
 ```
-
+```bash
 admin@ncs# config t
 Entering configuration mode terminal
 admin@ncs(config)# devices device PE1
@@ -162,6 +162,7 @@ fetch-result {
     }
 }
 admin@ncs#
+```
 
 ```bash
 config t
@@ -174,7 +175,7 @@ commit
 end
 device fetch-ssh-host-keys devices PE2
 ```
-
+``` bash
 admin@ncs# config t
 Entering configuration mode terminal
 admin@ncs(config)# devices device PE2
@@ -195,14 +196,14 @@ fetch-result {
     }
 }
 admin@ncs#
-
+```
 
 ####Get initial configuration from device
 
 ```bash
 devices sync-from
 ```
-
+```bash
 admin@ncs# devices sync-from
 sync-result {
     device PE1
@@ -212,7 +213,7 @@ sync-result {
     device PE2
     result true
 }
-
+```
 To display the devices and the configuration saved by NSO
 
 ```bash
@@ -248,6 +249,14 @@ Open the folder on PyCharm - add picture
 
 ### Step 6 - Create L3VPN service in NSO CLI
 
+```bash
+config
+services l3vpn-test1 coke customer coke vrf-name coke devices PE1 interface-id 0/0/0/2 ip-address 5.5.5.1 netmask 255.255.255.252 router-id 1.1.1.1
+devices PE2 interface-id 0/0/0/2 ip-address 6.6.6.1 netmask 255.255.255.252 router-id 2.2.2.2
+commit dry-run outformat cli
+commit
+```
+```bash
 admin@ncs# config
 Entering configuration mode terminal
 admin@ncs(config)# services l3vpn-test1 ?
@@ -412,6 +421,7 @@ cli {
     }
 }
 admin@ncs(config-devices-PE2)#
+```
 
 ### Step 7 - Create L3VPN service with custom portal
 
