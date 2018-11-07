@@ -12,8 +12,9 @@ A vagrant script will bring up a two IOS-XR instances that will be networked tog
 
 
 At the end of the lab, 
-## NSO
 
+## NSO
+{Need to write a description here}
 Service Model
 
 Device Model
@@ -42,7 +43,7 @@ Within the solution, there are four directories that you should be aware:
 3. **xrv-vagrant:** contains the files for vagrant to create the IOS-XRv and ubuntu instances and day0 configuration files.
 
 
-### Step 2 - 
+### Step 2 - Starting up NSO
 
 Check to see if NSO is running
 
@@ -81,7 +82,7 @@ Install NSO packages - check that the result for each package is true
 ```bash
 packages reload
 ```
-
+```bash
 admin@ncs# packages reload
 reload-result {
     package cisco-iosxr
@@ -92,10 +93,11 @@ reload-result {
     result true
 }
 admin@ncs#
+```
 
 ### Step 3 - Add devices to NSO
 
-####Create an Authgroup
+#### Create an Authgroup
 
 We will need to create an authentication group to specify the credentials for NSO to use when connecting to the devices:
 
@@ -127,7 +129,7 @@ devices authgroups group vagrant
 admin@ncs#
 ```
 
-####Add the first IOS-XR vagrant device
+#### Add the first IOS-XR vagrant device
 
 
 ```bash
@@ -198,7 +200,7 @@ fetch-result {
 admin@ncs#
 ```
 
-####Get initial configuration from device
+#### Get initial configuration from device
 
 ```bash
 devices sync-from
@@ -249,6 +251,8 @@ Open the folder on PyCharm - add picture
 
 ### Step 6 - Create L3VPN service in NSO CLI
 
+Let's create a L3VPN service using the NSO CLI.  
+
 ```bash
 config
 services l3vpn-test1 coke customer coke vrf-name coke devices PE1 interface-id 0/0/0/2 ip-address 5.5.5.1 netmask 255.255.255.252 router-id 1.1.1.1
@@ -259,33 +263,6 @@ commit
 ```bash
 admin@ncs# config
 Entering configuration mode terminal
-admin@ncs(config)# services l3vpn-test1 ?
-Possible completions:
-  <name:string>  range
-admin@ncs(config)# services l3vpn-test1 coke ?
-Possible completions:
-  check-sync           Check if device config is according to the service
-  commit-queue
-  customer
-  deep-check-sync      Check if device config is according to the service
-  devices
-  get-modifications    Get the data this service created
-  log
-  re-deploy            Run/Dry-run the service logic again
-  reactive-re-deploy   Reactive redeploy of service logic
-  touch                Touch a service
-  un-deploy            Undo the effects of this service
-  vrf-name
-  <cr>
-admin@ncs(config)# services l3vpn-test1 coke customer coke ?
-Possible completions:
-  devices  vrf-name  <cr>
-admin@ncs(config)# services l3vpn-test1 coke customer coke vrf-name coke ?
-Possible completions:
-  devices  <cr>
-admin@ncs(config)# services l3vpn-test1 coke customer coke vrf-name coke devices PE1 ?
-Possible completions:
-  interface-id  ip-address  netmask  router-id  <cr>
 admin@ncs(config)# services l3vpn-test1 coke customer coke vrf-name coke devices PE1 interface-id 0/0/0/2 ip-address 5.5.5.1 netmask 255.255.255.252 router-id 1.1.1.1
 admin@ncs(config-devices-PE1)# devices PE2 interface-id 0/0/0/2 ip-address 6.6.6.1 netmask 255.255.255.252 router-id 2.2.2.2
 
