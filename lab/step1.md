@@ -19,4 +19,5 @@ Within the solution, there are four directories that you should be aware:
 3. **xrv-vagrant:** contains the files for vagrant to create the IOS-XRv and ubuntu instances and day0 configuration files.
 
 [Step 2 - Starting up NSO]
+
 [Step 2 - Starting up NSO]: step2.md

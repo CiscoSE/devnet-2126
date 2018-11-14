@@ -50,4 +50,5 @@ reload-result {
 admin@ncs#
 ```
 [Step 3 - Add devices to NSO]
+
 [Step 3 - Add devices to NSO]: step3.md

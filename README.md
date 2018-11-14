@@ -24,5 +24,6 @@ NED - Cisco-IOS-XR
 
 
 [Let's Get Started]
+
 [Let's Get Started]: lab/step1.md
 

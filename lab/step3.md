@@ -128,4 +128,5 @@ show devices device PE1 | display xml
 ```
 
 [Step 4 - Review XML L3VPN Template]
+
 [Step 4 - Review XML L3VPN Template]: step4.md

@@ -12,4 +12,5 @@ Open the folder on PyCharm and review the yang data model
 ![l3vpn_data_model](/lab/images/l3vpn_data_model.png)
 
 [Step 6 - Create L3VPN service in NSO CLI]
+
 [Step 6 - Create L3VPN service in NSO CLI]: step6.md
