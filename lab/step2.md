@@ -5,7 +5,7 @@ Check to see if NSO is running
 ```bash
 man ncs
 ```
-If you a response "No manual entry for ncs"  Then NSO is not running and we will need to start it.
+If you recieve a response "No manual entry for ncs"  Then NSO is not running and we will need to start it.
 
 ```bash
 source $HOME/ncs-4.7/ncsrc
@@ -49,6 +49,8 @@ reload-result {
 }
 admin@ncs#
 ```
+At this point, NSO is operational and the packages for IOS-XR NED and L3VPN service have been installed.
+
 [Step 3 - Add devices to NSO]
 
 [Step 3 - Add devices to NSO]: step3.md

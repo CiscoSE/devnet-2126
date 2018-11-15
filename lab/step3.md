@@ -34,7 +34,6 @@ admin@ncs#
 
 #### Add the first IOS-XR vagrant device
 
-
 ```bash
 config t
 devices device PE1
@@ -68,6 +67,8 @@ fetch-result {
 }
 admin@ncs#
 ```
+
+#### Add the second IOS-XR vagrant device
 
 ```bash
 config t
@@ -126,6 +127,8 @@ show devices brief
 
 show devices device PE1 | display xml
 ```
+
+We have now connected the devices to NSO.  
 
 [Step 4 - Review XML L3VPN Template]
 
