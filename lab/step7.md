@@ -19,6 +19,6 @@ From here we can create a new service just like we did from the NSO CLI.
 
 Please see a sample of the dashboard below:
 
-![Portal](lab/images/nso_portal.png)
+![Portal](/lab/images/nso_portal.png)
 
 #### End of the Lab - Congrats!!
