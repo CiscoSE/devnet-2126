@@ -43,7 +43,7 @@ authgroup vagrant
 state admin-state unlocked
 commit
 end
-device fetch-ssh-host-keys devices PE1
+devices fetch-ssh-host-keys device PE1
 ```
 ```bash
 admin@ncs# config t
@@ -79,7 +79,7 @@ authgroup vagrant
 state admin-state unlocked
 commit
 end
-device fetch-ssh-host-keys devices PE2
+devices fetch-ssh-host-keys device PE2
 ```
 ``` bash
 admin@ncs# config t
