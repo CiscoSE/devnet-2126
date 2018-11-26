@@ -147,6 +147,9 @@ cli {
     }
 }
 admin@ncs(config-devices-PE2)#
+admin@ncs(config-devices-PE2)#commit
+Commit complete.
+admin@ncs(config-devices-PE2)#
 ```
 
 [Step 7 - Create L3VPN service with custom portal]
