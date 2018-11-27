@@ -5,7 +5,7 @@ Contacts:
 * Jason Mah - jamah@cisco.com
 * Santiago Flores Kanter - sfloresk@cisco.com
 
-In this lab we will only setup the PE routers for a simple L3VPN use case.  Typically, you would also need the associate CE routers to complete the service.  However, we will demostrate NSO's capabilities to create, update and remove the service with this example. 
+In this lab we will only setup the PE routers for a simple L3VPN use case.  Typically, you would also need the associate CE routers to complete the service.  However, we will demonstrate NSO's capabilities to create, update and remove the service with this example. 
 
 ## Setup
 
