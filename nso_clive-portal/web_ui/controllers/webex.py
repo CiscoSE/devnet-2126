@@ -20,8 +20,8 @@ from jinja2 import FileSystemLoader
 import os
 import requests
 
-BOT_TOKEN = "YmEzNTBlOWItZGIwYy00NGI0LTg4YTEtNzBkY2UwNGE2MDhiM2MzNmZlOWQtOTNm"
-ROOM_ID = "Y2lzY29zcGFyazovL3VzL1JPT00vYTJmZWZjODAtODVmZC0xMWU4LTg5Y2MtZDE2NzQ0MGU1ZTI2"
+BOT_TOKEN = ""  #add token
+ROOM_ID = "" #add room_id
 URL = "https://api.ciscospark.com/"
 
 DIR_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
